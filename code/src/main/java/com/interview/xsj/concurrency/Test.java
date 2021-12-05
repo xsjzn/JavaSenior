@@ -72,6 +72,7 @@ public class Test {
         public void run() {
             lock.lock();
             try {
+                //判断一下是不是到我了
                 while (num != currentId) {
                     conditionList[currentId].await();
                 }
