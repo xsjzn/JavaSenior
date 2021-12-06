@@ -2,6 +2,11 @@ package com.interview.xsj.lru.withoutJdk;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
@@ -21,11 +26,16 @@ public class LRUCache {
             this.value=value;
         }
     }
-    private Map<Integer,DlinkedNode> cache=new HashMap<>();
+    private volatile Map<Integer,DlinkedNode> cache=new HashMap<>();
     private int size;
     private int capacity;
     private DlinkedNode head,tail;
-    private ReadWriteLock lock = new ReentrantReadWriteLock();
+    //读写锁
+    private ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+    private Lock writeLock = lock.writeLock();
+    private Lock readLock = lock.readLock();
+
+    private ScheduledExecutorService scheduledExecutorService;
 
     public LRUCache(int capacity) {
         this.size=0;
@@ -35,11 +45,17 @@ public class LRUCache {
         tail=new DlinkedNode();
         head.next=tail;
         tail.prev=head;
+        scheduledExecutorService = Executors.newScheduledThreadPool(3);
     }
 
-
+    /**
+     * 当前的 get方法有线程 安全问题 因为读锁 不互斥 moveToHead 应该使用 自旋cas+ volatile
+     * 可以参考 ConcurrentLinkedQueue
+     * @param key
+     * @return
+     */
     public int get(int key){
-        lock.readLock().lock();
+        readLock.lock();
         try {
             DlinkedNode node = cache.get(key);
             if(node==null) return -1;
@@ -47,7 +63,7 @@ public class LRUCache {
             moveToHead(node);
             return node.value;
         } finally {
-            lock.readLock().unlock();
+            readLock.unlock();
         }
     }
 
@@ -72,8 +88,8 @@ public class LRUCache {
         node.next.prev=node.prev;
     }
 
-    public void put(int key,int value){
-        lock.writeLock().lock();
+    public void put(int key,int value,long expireTime){
+        writeLock.lock();
         try {
             DlinkedNode node = cache.get(key);
             if(node==null){
@@ -91,6 +107,10 @@ public class LRUCache {
                     cache.remove(tail.key);
                     --size;
                 }
+                //添加 定时删除的功能
+                if(expireTime>0){
+                    removeAfterExpireTime(key,expireTime);
+                }
 
             }else{
                 //如果key 存在，先通过哈希表定位，再修改val 并移动到头部
@@ -98,8 +118,27 @@ public class LRUCache {
                 moveToHead(node);
             }
         } finally {
-            lock.writeLock().lock();
+            writeLock.lock();
         }
+    }
+
+    public Integer remove(int key){
+        writeLock.lock();
+        try{
+            if(cache.containsKey(key)){
+                DlinkedNode node = cache.get(key);
+                removeNode(node);
+                --size;
+                return cache.remove(key).value;
+            }else{
+                return null;
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            writeLock.unlock();
+        }
+        return null;
     }
 
     private DlinkedNode removeTail() {
@@ -108,5 +147,10 @@ public class LRUCache {
         return res;
     }
 
+    private void removeAfterExpireTime(int key,long expireTime){
+        scheduledExecutorService.schedule(()->{
+            remove(key);
+        },expireTime, TimeUnit.MILLISECONDS);
+    }
 
 }
