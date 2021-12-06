@@ -44,7 +44,7 @@ public class MyLRUCacheWithExpireTime<K,V> {
      * @param capacity
      * @return
      */
-    public MyLRUCacheWithExpireTime getInstance(int capacity){
+    public static MyLRUCacheWithExpireTime getInstance(int capacity){
         if(instance==null){
             synchronized (MyLRUCacheWithExpireTime.class){
                 if(instance==null){
@@ -123,5 +123,8 @@ public class MyLRUCacheWithExpireTime<K,V> {
         if(tail!=null){
             cacheMaps.remove(tail);
         }
+    }
+    public int size(){
+        return cacheMaps.size();
     }
 }

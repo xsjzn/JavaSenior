@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="764a60a1-695e-437e-be36-dc3a65fe23c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/lru/MyLRUCacheWithExpireTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/lru/withoutJdk/LRUCache.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/lru/withoutJdk/LRUCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/lru/withoutJdk/TestLRU.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/lru/MyLRUCacheWithExpireTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/lru/MyLRUCacheWithExpireTime.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,13 +227,26 @@
     <property name="project.structure.side.proportion" value="0.20229885" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Application.printloopn">
+  <component name="RunManager" selected="Application.TestLRU">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.interview.xsj.concurrency.Test" />
       <module name="JavaSenior" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.interview.xsj.concurrency.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestLRU" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.interview.xsj.lru.withoutJdk.TestLRU" />
+      <module name="JavaSenior" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.interview.xsj.lru.withoutJdk.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -272,6 +282,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TestLRU" />
         <item itemvalue="Application.printloopn" />
         <item itemvalue="Application.Test" />
         <item itemvalue="Application.printTaskSemaphore" />
@@ -290,7 +301,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638621446672</updated>
       <workItem from="1638621447957" duration="6774000" />
-      <workItem from="1638771034125" duration="4896000" />
+      <workItem from="1638771034125" duration="5240000" />
     </task>
     <servers />
   </component>
