@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="764a60a1-695e-437e-be36-dc3a65fe23c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/lru/withoutJdk/TestLRU.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/lru/MyLRUCacheWithExpireTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/lru/MyLRUCacheWithExpireTime.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/code/src/main/java/com/interview/xsj/mianshi/dp/fruitBagNum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -227,7 +235,7 @@
     <property name="project.structure.side.proportion" value="0.20229885" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
-  <component name="RunManager" selected="Application.TestLRU">
+  <component name="RunManager" selected="Application.fruitBagNum">
     <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.interview.xsj.concurrency.Test" />
       <module name="JavaSenior" />
@@ -247,6 +255,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.interview.xsj.lru.withoutJdk.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="fruitBagNum" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.interview.xsj.mianshi.dp.fruitBagNum" />
+      <module name="JavaSenior" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.interview.xsj.mianshi.dp.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -282,6 +303,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.fruitBagNum" />
         <item itemvalue="Application.TestLRU" />
         <item itemvalue="Application.printloopn" />
         <item itemvalue="Application.Test" />
@@ -301,7 +323,7 @@
       <option name="presentableId" value="Default" />
       <updated>1638621446672</updated>
       <workItem from="1638621447957" duration="6774000" />
-      <workItem from="1638771034125" duration="5240000" />
+      <workItem from="1638771034125" duration="9248000" />
     </task>
     <servers />
   </component>
